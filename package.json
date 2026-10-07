@@ -1,0 +1,54 @@
+{
+  "name": "pulses-easier",
+  "version": "0.7.0-glass-beta",
+  "description": "Pulses Easier — Minecraft 整合包更新器（美化版）",
+  "main": "src/main/index.js",
+  "author": "YG",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder --win",
+    "build:dir": "electron-builder --win --dir",
+    "test": "node src/test/run.js"
+  },
+  "build": {
+    "appId": "com.pulses.easier",
+    "productName": "Pulses Easier",
+    "directories": { "output": "dist" },
+    "files": [
+      "src/**/*",
+      "assets/**/*",
+      "node_modules/**/*"
+    ],
+    "extraResources": [
+      { "from": "assets", "to": "assets" }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "build/icon.ico",
+      "requestedExecutionLevel": "asInvoker"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Pulses Easier"
+    },
+    "compression": "maximum"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "dependencies": {
+    "jszip": "^3.10.1"
+  }
+}
